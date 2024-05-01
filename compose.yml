@@ -23,4 +23,4 @@ services:
       - --collation-server=utf8mb4_unicode_ci
     restart: always
     volumes:
-      - /DevOps/data:/docker-entrypoint-initdb.d
+      - /DevOps/data:/docker-entrypoint-initdb.d/
