@@ -1,0 +1,26 @@
+networks:
+  mysql:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.16.250.0/24"
+
+services:
+  mysql-server:
+    container_name: mysql
+    image:  mysql:8.0
+    networks:
+      mysql:
+        ipv4_address: 172.16.250.100
+    environment:
+      - MYSQL_ROOT_PASSWORD=My_PasswD
+      - MYSQL_DATABASE=world
+      - MYSQL_USER=Ademiro
+      - MYSQL_PASSWORD=LanretE
+    command:
+      - mysqld
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    restart: always
+    volumes:
+      - /DevOps/data:/docker-entrypoint-initdb.d
